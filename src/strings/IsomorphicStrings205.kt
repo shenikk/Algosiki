@@ -36,4 +36,18 @@ class IsomorphicStrings205 {
 
 // hashSetOf(stringMap.values)
 // HashSet(stringMap.values)
+
+    fun isIsomorphicV2(s: String, t: String): Boolean {
+        val map = mutableMapOf<Char, Char>()
+
+        s.forEachIndexed { index, c ->
+            if (!map.containsKey(c) && !map.containsValue(t[index])) {
+                map[c] = t[index]
+            } else if (map[c] != t[index]) {
+                return false
+            }
+        }
+
+        return true
+    }
 }
